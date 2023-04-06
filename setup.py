@@ -26,7 +26,7 @@ setuptools.setup(
         "Topic :: Scientific/Engineering :: Medical Science Apps."
     ],
     install_requires=[
-        "matplotlib==3.3.0"
+        "matplotlib>=3.3.0"
     ],
     python_requires='>=3.7'
 )
