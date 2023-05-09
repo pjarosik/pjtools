@@ -1,9 +1,8 @@
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
-
 def create_animation(imgs, value_range=None, cmap=None, figsize=None,
-                  interval=50, xlabel="OX", ylabel="OY", extent=None):
+                  interval=50, xlabel="OX", ylabel="OY", extent=None, aspect=None):
     """
     Create matpltotlib animation for a given sequence of frames.
 
@@ -26,6 +25,8 @@ def create_animation(imgs, value_range=None, cmap=None, figsize=None,
     img = ax.imshow(imgs[0], cmap=cmap, extent=extent)
     ax.set_xlabel(xlabel)
     ax.set_ylabel(ylabel)
+    if aspect is not None:
+      ax.set_aspect(aspect)
     if value_range is not None:
         img.set_clim(*value_range)
     return animation.FuncAnimation(
