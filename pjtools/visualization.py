@@ -32,3 +32,37 @@ def create_animation(imgs, value_range=None, cmap=None, figsize=None,
     return animation.FuncAnimation(
         fig, animate, init_func=init, frames=len(imgs),
         interval=interval, blit=True)
+
+
+def create_animation_1d(lines, value_range=None, cmap=None, figsize=None,
+                        interval=50, xlabel="OX", ylabel="OY",
+                        aspect=None):
+    """
+    Create matpltotlib animation for a given sequence of lines.
+
+    :param imgs: 2D numpy array with shape (frame, y)
+    """
+
+    fig, ax = plt.subplots()
+    
+    t = np.arange(len(lines[0]))
+
+    def init():
+        l.set_data(t, lines[0])
+        return l, 
+
+    def animate(frame):
+        l.set_data(t, lines[frame])
+        fig.suptitle(f"sample: {frame}")
+        return l, 
+
+    if figsize is not None:
+        fig.set_size_inches(figsize)
+    l,  = ax.plot(t, lines[0])
+    ax.set_xlabel(xlabel)
+    ax.set_ylabel(ylabel)
+    if aspect is not None:
+        ax.set_aspect(aspect)
+    return animation.FuncAnimation(
+        fig, animate, init_func=init, frames=len(lines),
+        interval=interval, blit=True)
