@@ -2,7 +2,9 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
 def create_animation(imgs, value_range=None, cmap=None, figsize=None,
-                  interval=50, xlabel="OX", ylabel="OY", extent=None, aspect=None):
+                  interval=50, xlabel="OX", ylabel="OY", extent=None, aspect=None,
+                  titles=None
+):
     """
     Create matpltotlib animation for a given sequence of frames.
 
@@ -17,7 +19,10 @@ def create_animation(imgs, value_range=None, cmap=None, figsize=None,
 
     def animate(frame):
         img.set_data(imgs[frame])
-        fig.suptitle(f"frame: {frame}")
+        if titles is not None:
+            fig.suptitle(titles[frame])
+        else:
+            fig.suptitle(f"frame: {frame}")
         return (img,)
 
     if figsize is not None:
