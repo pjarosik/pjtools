@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
+import numpy as np
 
 def create_animation(imgs, value_range=None, cmap=None, figsize=None,
                   interval=50, xlabel="OX", ylabel="OY", extent=None, aspect=None,
